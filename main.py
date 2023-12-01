@@ -1,11 +1,11 @@
 import argparse
 from typing import Dict, List, Tuple
 
-from SongKeyGraphBuilder import SongKeyGraphBuilder
+from song_graph_builder import SongGraphBuilder
 
 
 def traverseGraph(
-    graph: Dict[str, SongKeyGraphBuilder.Node],
+    graph: Dict[str, SongGraphBuilder.Node],
     song_name_to_song_key: Dict[str, str],
 ) -> List[Tuple[str, str]]:
     longest_path = None
@@ -42,7 +42,7 @@ def main():
     )
     args=parser.parse_args()
 
-    graph_builder =SongKeyGraphBuilder(args.song_dir)
+    graph_builder =SongGraphBuilder(args.song_dir)
     graph = graph_builder.getGraph()
     song_name_to_song_key_map = graph_builder.getSongNameToSongKey()
     mixed_songs = traverseGraph(graph, song_name_to_song_key_map)

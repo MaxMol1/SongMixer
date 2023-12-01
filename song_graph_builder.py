@@ -8,7 +8,7 @@ import numpy as np
 from constants import *
 
 
-class SongKeyGraphBuilder():
+class SongGraphBuilder():
     @dataclass
     class Node():
         song_name: str  # key
