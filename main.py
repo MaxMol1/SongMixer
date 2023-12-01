@@ -44,7 +44,7 @@ def main():
 
     graph_builder =SongGraphBuilder(args.song_dir)
     graph = graph_builder.getGraph()
-    song_name_to_song_key_map = graph_builder.getSongNameToSongKey()
+    song_name_to_song_key_map = graph_builder.get_song_name_to_song_key()
     mixed_songs = traverseGraph(graph, song_name_to_song_key_map)
     
     print(
