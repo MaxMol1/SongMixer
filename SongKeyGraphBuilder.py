@@ -27,6 +27,9 @@ class SongKeyGraphBuilder():
     def getGraph(self) -> Dict[str, Node]:
         return self.graph
 
+    def getSongNameToSongKey(self) -> Dict[str, str]:
+        return self.song_name_to_song_key
+
     def _read_song_keys(self) -> None:
         for filename in os.listdir(self.song_dir):
             if not filename.endswith(".mp3"):
