@@ -27,7 +27,10 @@ class SongKeyGraphBuilder():
 
     def _read_song_keys(self) -> None:
         for filename in os.listdir(self.song_dir):
-            song_name = filename[:-4]  # TODO: strip the filename better (can't assume .mp3 extension e.g. ds_store)
+            if not filename.endswith(".mp3"):
+                continue
+
+            song_name = filename[:-4]
             song_path = os.path.join(self.song_dir, filename)
 
             # load file into chromograph
