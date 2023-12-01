@@ -24,11 +24,14 @@ class SongKeyGraphBuilder():
         self._read_song_keys()
         self._create_graph()
 
-    def getGraph(self) -> Dict[str, Node]:
-        return self.graph
-
     def getSongNameToSongKey(self) -> Dict[str, str]:
         return self.song_name_to_song_key
+
+    def getSongKeyToSongNames(self) -> Dict[str, List[str]]:
+        return self.song_key_to_song_names
+
+    def getGraph(self) -> Dict[str, Node]:
+        return self.graph
 
     def _read_song_keys(self) -> None:
         for filename in os.listdir(self.song_dir):

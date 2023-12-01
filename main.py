@@ -13,7 +13,6 @@ def traverseGraph(
     # run traversal from every node
     for node in graph:
         path_stack = [[node]]
-        visited = set()
         finished_paths = []
         
         while path_stack:
@@ -21,20 +20,17 @@ def traverseGraph(
             connections = graph[path[-1]].songs_in_key
             visited = set(path)
 
-            new_path_discovered = False
+            if all([connection in visited for connection in connections]):
+                finished_paths.append(path)
+
             for connection in connections:
                 if connection not in visited:
-                    visited.add(connection)
                     new_path = path + [connection]
                     path_stack.append(new_path)
-                    new_path_discovered = True
-
-            if not new_path_discovered:
-                finished_paths.append(path)
 
         longest_path = max(finished_paths, key=len)
 
-    mixed_songs = {**{path: song_name_to_song_key[path] for path in longest_path}}
+    mixed_songs = {path: song_name_to_song_key[path] for path in longest_path}
     return mixed_songs
 
 def main():
